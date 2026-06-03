@@ -10,8 +10,12 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('lab')
-  getLab(): { AMBIENTE: string | null; API_KEY: string | null } {
-    return this.appService.getLabInfo();
+  @Get('labwio')
+  getLab() {
+    return {
+      mensaje: 'Laboratorio 3 funcionando',
+      ambiente: process.env.AMBIENTE,
+      apiKey: process.env.API_KEY
+    };
   }
 }
