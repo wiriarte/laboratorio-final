@@ -1,3 +1,5 @@
+// Guardar este archivo como: Jenkinsfile.wiriarte
+
 pipeline {
 
     agent {
@@ -8,7 +10,8 @@ pipeline {
 
     environment {
         APP_VERSION = "3.0.0"
-        IMAGE_NAME = "wiriarte/tarea-final"
+        // CORRECCIÓN: Cambiado 'tarea-final' por 'laboratorio-final' para que coincida con entrega.yaml
+        IMAGE_NAME = "wiriarte/laboratorio-final" 
     }
 
     stages {

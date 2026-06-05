@@ -44,21 +44,16 @@ spec:
     spec:
       containers:
         - name: app-wiriarte
-
-          image: wiriarte/laboratorio-final:wiriarte
-
+          image: wiriarte/laboratorio-final:waldo-iriarte
           imagePullPolicy: Always
-
           ports:
             - containerPort: 3000
-
           env:
             - name: AMBIENTE
               valueFrom:
                 configMapKeyRef:
                   name: config-wiriarte
                   key: AMBIENTE
-
             - name: API_KEY
               valueFrom:
                 secretKeyRef:
@@ -75,9 +70,7 @@ metadata:
 spec:
   selector:
     app: app-wiriarte
-
   ports:
     - port: 80
       targetPort: 3000
-
   type: ClusterIP
