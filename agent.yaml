@@ -1,13 +1,10 @@
 apiVersion: v1
 kind: Pod
-
 metadata:
   labels:
     app: jenkins-agent
-
 spec:
   containers:
-
   - name: node
     image: node:22-alpine
     command:
@@ -19,9 +16,19 @@ spec:
     command:
       - cat
     tty: true
+    # ADICIÓN: Montar el socket de Docker en este contenedor
+    volumeMounts:
+    - name: docker-sock
+      mountPath: /var/run/docker.sock
 
   - name: kubectl
     image: bitnami/kubectl
     command:
       - cat
     tty: true
+
+  # ADICIÓN: Definir el volumen apuntando al socket del host
+  volumes:
+  - name: docker-sock
+    hostPath:
+      path: /var/run/docker.sock
