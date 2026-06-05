@@ -4,6 +4,8 @@ metadata:
   labels:
     app: jenkins-agent
 spec:
+  securityContext:
+    runAsUser: 0 
   containers:
   - name: node
     image: node:22-alpine
@@ -16,7 +18,6 @@ spec:
     command:
       - cat
     tty: true
-    # ADICIÓN: Montar el socket de Docker en este contenedor
     volumeMounts:
     - name: docker-sock
       mountPath: /var/run/docker.sock
@@ -26,8 +27,11 @@ spec:
     command:
       - cat
     tty: true
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
 
-  # ADICIÓN: Definir el volumen apuntando al socket del host
   volumes:
   - name: docker-sock
     hostPath:

@@ -10,7 +10,6 @@ pipeline {
 
     environment {
         APP_VERSION = "3.0.0"
-        // CORRECCIÓN: Cambiado 'tarea-final' por 'laboratorio-final' para que coincida con entrega.yaml
         IMAGE_NAME = "wiriarte/laboratorio-final" 
     }
 
@@ -68,7 +67,7 @@ pipeline {
             steps {
                 container('kubectl') {
                     sh '''
-                    kubectl apply -f entrega.yaml
+                    sleep 5 && kubectl apply -f entrega.yaml
                     '''
                 }
             }
