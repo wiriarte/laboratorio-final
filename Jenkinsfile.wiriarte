@@ -67,7 +67,7 @@ pipeline {
             steps {
                 container('kubectl') {
                     sh '''
-                    sleep 5 && kubectl apply -f entrega.yaml
+                    kubectl apply -f entrega.yaml
                     '''
                 }
             }
